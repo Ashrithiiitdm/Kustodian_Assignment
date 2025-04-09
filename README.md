@@ -92,6 +92,6 @@ To view the frontend application, open your browser and navigate to:
 ```bash
 http://localhost:5173
 ```
-- You should see the application interface where you can upload an Excel file and view client details.
+
 
 
