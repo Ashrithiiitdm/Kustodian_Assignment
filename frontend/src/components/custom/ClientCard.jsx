@@ -13,10 +13,20 @@ import { Phone, MapPin, CalendarDays, CalendarClock } from "lucide-react";
 
 const formatDate = (dateStr) => {
 	if (!dateStr) return "-";
-	const [year, month, day] = dateStr.split("-");
-	if (!year || !month || !day) return "-";
+
+	// Remove the `T00:00:00` part
+	const cleanedDate = dateStr.split("T")[0]; // This will get the part before 'T'
+
+	// Split the cleaned date into day, month, and year
+	const [year, month, day] = cleanedDate.split("-");
+
+	if (!day || !month || !year) return "-";
+
+	// Return the formatted date as DD-MM-YYYY
 	return `${day}-${month}-${year}`;
 };
+
+
 
 const isValidUrl = (url) => {
 	try {
@@ -132,7 +142,7 @@ const ClientCard = ({ client }) => {
 							<strong>Data Tracker:</strong> {client.DataTracker}
 						</div>
 						<div>
-							<strong>Time Spent:</strong> {client.TimeSpent}
+							<strong>Time Spent:</strong> <br />{client.TimeSpent} months
 						</div>
 						<div>
 							<strong>Documents:</strong> {client.Documents}
